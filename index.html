@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 основ мудрой жизни — Авторский курс Марии Мордашко</title>
+    
+    <!-- Подключение шрифта Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #C86B4D; 
+            --primary-hover: #b05a3e;
+            --primary-light: #F5EBE0;
+            --bg-color: #FAFAFA;
+            --text-main: #2C2C2C;
+            --text-muted: #6B6B6B;
+            --header-height: 80px;
+            --white: #FFFFFF;
+        }
+
+        /* Базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Шапка сайта */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            width: 100%;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-height);
+            padding-bottom: 50px;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: rgba(200, 107, 77, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 1.2rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(200, 107, 77, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(200, 107, 77, 0.3);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 9 / 16;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Заголовки секций */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header span {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        /* Программа (Карусель) */
+        .course-section {
+            background-color: #fdfdfd;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 20px 0;
+            cursor: grab;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .course-card {
+            flex: 0 0 350px;
+            background: var(--white);
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(200, 107, 77, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .card-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .course-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            padding-top: 20px;
+            border-top: 1px dashed #EEE;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-light);
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Цитата */
+        .quote-box {
+            background: var(--primary-light);
+            border-radius: 40px;
+            padding: 60px;
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 20px;
+        }
+
+        .quote-box p {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-box cite {
+            font-weight: 700;
+            font-style: normal;
+            color: var(--primary);
+        }
+
+        /* Расписание: Видео + Даты */
+        .schedule-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .schedule-video {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #000;
+        }
+
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .schedule-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateX(10px);
+        }
+
+        .schedule-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .schedule-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* О преподавателе */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            background: #f4f4f4;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-image {
+                justify-content: center;
+                width: 100%;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .schedule-layout {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav a {
+                font-size: 0.8rem;
+            }
+            .course-card {
+                flex: 0 0 280px;
+            }
+            .quote-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home">Главная</a>
+                <a href="#about">Обо мне</a>
+                <a href="#course">Программа курса</a>
+                <a href="#schedule">Расписание</a>
+                <a href="https://t.me/mariamordashko" target="_blank">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный экран -->
+        <section class="hero" id="home">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <span class="tag">Светская программа этического образования</span>
+                    <h1>16 основ мудрой жизни: путь к внутренней устойчивости и гармонии</h1>
+                    <p>Обретите опору в древней мудрости, адаптированной для современного ритма жизни. Практический курс о том, как управлять эмоциями и находить смысл там, где другие видят хаос.</p>
+                    <a href="#schedule" class="btn">Занять место в группе</a>
+                </div>
+
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="https://i.yapx.ru/dRrv0.jpg" alt="Мария Мордашко">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Обо мне -->
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <div class="section-header" style="text-align: left;">
+                            <span>Преподаватель</span>
+                            <h2 style="text-align: left;">Давайте знакомиться</h2>
+                        </div>
+                        <p>Меня зовут Мария Мордашко. Я являюсь сертифицированным преподавателем программы «16 основ мудрой жизни» и педагогом с многолетним стажем.</p>
+                        <p>Мой подход — это сочетание глубокой академической базы и живой, радостной энергии. Я верю, что мудрость должна быть практичной и применимой в повседневности.</p>
+                        <p>Уже второй год я провожу учебные программы, помогая людям находить внутренний баланс и осознанность в каждом дне.</p>
+                    </div>
+                    <div style="background: var(--primary-light); border-radius: 32px; padding: 40px; text-align: center;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px;">Моя миссия</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.4;">Создать безопасное пространство, где каждый сможет исследовать свои ценности и развить качества, ведущие к истинному счастью.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Программа курса -->
+        <section class="course-section" id="course">
+            <div class="container">
+                <div class="section-header">
+                    <span>Четыре мудрости</span>
+                    <h2>Программа курса</h2>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="course-card">
+                            <div class="card-number">01</div>
+                            <h3>Осознанные мысли</h3>
+                            <p>Исследуем, как мысли формируют реальность. Учимся управлять эмоциями и освобождаться от деструктивных привычек ума.</p>
+                            <div class="card-footer">Мудрость №1</div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="card-number">02</div>
+                            <h3>Осознанные действия</h3>
+                            <p>Понимаем влияние наших поступков на мир. Учимся выбирать действия, основанные на доброте и ответственности.</p>
+                            <div class="card-footer">Мудрость №2</div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="card-number">03</div>
+                            <h3>Осознанные отношения</h3>
+                            <p>Развиваем гармоничные связи. Изучаем искусство взаимного уважения и экологичного решения конфликтов.</p>
+                            <div class="card-footer">Мудрость №3</div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="card-number">04</div>
+                            <h3>Осознанная цель</h3>
+                            <p>Ищем истинный смысл и вдохновение. Исследуем внутренние ценности для ощущения целостности жизни.</p>
+                            <div class="card-footer">Мудрость №4</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-nav">
+                        <button class="nav-btn" onclick="scrollCarousel(-350)">←</button>
+                        <button class="nav-btn" onclick="scrollCarousel(350)">→</button>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <p>«Ключом к более счастливому и успешному миру является взращивание сострадания. Нам не нужно становиться религиозными, но каждому из нас требуется развивать в себе благие человеческие качества».</p>
+                    <cite>— Его Святейшество Далай-лама XIV</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Расписание -->
+        <section id="schedule">
+            <div class="container">
+                <div class="section-header">
+                    <span>Начните путь сейчас</span>
+                    <h2>Даты ближайшего потока</h2>
+                </div>
+                
+                <div class="schedule-layout">
+                    <!-- Видео слева -->
+                    <div class="schedule-video">
+                        <div style="position: relative; padding-top: 56.25%; width: 100%">
+                            <iframe src="https://kinescope.io/embed/95nKcurvu33W4hapNXQgNA" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Даты справа -->
+                    <div class="schedule-list">
+                        <div class="schedule-card">
+                            <h4>18 октября (пт)</h4>
+                            <p>18:30 – 21:30 (мск)</p>
+                        </div>
+                        <div class="schedule-card">
+                            <h4>19 октября (сб)</h4>
+                            <p>13:30 – 16:30 (мск)</p>
+                        </div>
+                        <div class="schedule-card">
+                            <h4>25 октября (пт)</h4>
+                            <p>18:30 – 21:30 (мск)</p>
+                        </div>
+                        <div class="schedule-card">
+                            <h4>26 октября (сб)</h4>
+                            <p>13:30 – 16:30 (мск)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <p style="margin-bottom: 20px; font-weight: 600; color: var(--primary);">Регистрация открыта до 18 октября 16:30 (мск)</p>
+                    <a href="https://t.me/mariamordashko" target="_blank" class="btn">Занять место в группе</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Курс «16 основ мудрой жизни». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const track = document.getElementById('carouselTrack');
+        
+        function scrollCarousel(distance) {
+            track.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
+
+        // Drag scroll logic
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener('mousedown', (e) => {
+            isDown = true;
+            track.style.cursor = 'grabbing';
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+            track.style.cursor = 'grab';
+        });
+        track.addEventListener('mouseup', () => {
+            isDown = false;
+            track.style.cursor = 'grab';
+        });
+        track.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 2;
+            track.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
